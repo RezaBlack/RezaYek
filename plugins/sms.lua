@@ -1,6 +1,6 @@
 local function run(msg, matches)
   if not is_sudo(msg) then -- For Sudoers only !
-    return 'It is For Sudo Users'
+    return 'فقط برای سازنده ی بات امکانپذیر است'
   end
 	if matches[1] == 'sms' and is_sudo(msg) then
 		local response = matches[3]
