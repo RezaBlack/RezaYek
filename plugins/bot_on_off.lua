@@ -17,13 +17,13 @@ local function enable_channel(receiver)
 	end
 
 	if _config.disabled_channels[receiver] == nil then
-		return 'Robot is Online'
+		return 'ربات آنلاین است'
 	end
 	
 	_config.disabled_channels[receiver] = false
 
 	save_config()
-	return "Robot is Online"
+	return "ربات آنلاین است"
 end
 
 local function disable_channel( receiver )
@@ -34,15 +34,16 @@ local function disable_channel( receiver )
 	_config.disabled_channels[receiver] = true
 
 	save_config()
-	return "Robot is Offline"
+	return "ربات آفلاین است"
 end
 
 local function pre_process(msg)
 	local receiver = get_receiver(msg)
 	
 	-- If sender is moderator then re-enable the channel
+	--if is_momod(msg) then
 	--if is_sudo(msg) then
-	if is_momod(msg) then
+	if is_sudo(msg) then
 	  if msg.text == "[!/]bot on" then
 	    enable_channel(receiver)
 	  end
